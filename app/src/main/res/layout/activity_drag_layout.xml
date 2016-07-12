@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.learzhu.customview.customview.DragLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drag_ll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--左侧-->
+    <LinearLayout
+        android:id="@+id/left_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LEFT" />
+    </LinearLayout>
+
+    <!--右侧-->
+    <LinearLayout
+        android:id="@+id/main_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MAIN" />
+
+        <Button
+            android:id="@+id/left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GOLEFT" />
+    </LinearLayout>
+</com.learzhu.customview.customview.DragLayout>
+
