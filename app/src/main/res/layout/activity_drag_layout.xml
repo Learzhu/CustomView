@@ -43,8 +43,9 @@
         <com.learzhu.customview.customview.view.WritingBoardView
             android:layout_width="match_parent"
             android:layout_height="400dp"
-            board:labelPositon="left"
-            board:showText="true" />
+            board:boardBackground="@color/color1"
+            board:paintColor="@color/colorPrimaryDark"
+            board:paintWidth="3dp" />
     </LinearLayout>
 </com.learzhu.customview.customview.view.DragLayout>
 

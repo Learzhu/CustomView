@@ -15,11 +15,8 @@
     <attr name="CustomizeStyle" format="reference" />
 
     <declare-styleable name="WritingBoardView">
-        <attr name="showText" format="boolean" />
-        <attr name="labelPositon" format="enum">
-            <enum name="left" value="0" />
-            <enum name="right" value="1" />
-        </attr>
-
+        <attr name="boardBackground" format="color"></attr> <!--画板颜色-->
+        <attr name="paintColor" format="color"></attr> <!--画笔颜色-->
+        <attr name="paintWidth" format="dimension"></attr> <!--画笔宽度-->
     </declare-styleable>
 </resources>

@@ -2,7 +2,13 @@ package com.learzhu.customview.customview.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Path;
 import android.util.AttributeSet;
+import android.util.TypedValue;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.learzhu.customview.customview.R;
@@ -28,8 +34,11 @@ import com.learzhu.customview.customview.R;
  */
 public class WritingBoardView extends View {
 
-    private boolean aBoolean;
-    private int integer;
+    private int mBoardBackground;//画板颜色
+    private int mPaintColor;//画笔颜色
+    private int mPaintWidth;//画笔宽度
+    private Path mPath;
+    private Paint mPaint;//画笔
 
     private final int SIZE = 15;
 
@@ -39,17 +48,25 @@ public class WritingBoardView extends View {
 
     public WritingBoardView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        TypedArray array = context.getTheme().obtainStyledAttributes(attrs, R.styleable.WritingBoardView, 0, 0);
-        try {
-            aBoolean = array.getBoolean(R.styleable.WritingBoardView_showText, false);
-            integer = array.getInteger(R.styleable.WritingBoardView_labelPositon, 0);
-        } finally {
-            array.recycle();
-        }
+//        TypedArray array = context.getTheme().obtainStyledAttributes(attrs, R.styleable.WritingBoardView, 0, 0);
+//        TypedArray array = context.getTheme().obtainStyledAttributes(attrs, R.styleable.WritingBoardView, 0, 0);
+        init(context, attrs);
     }
 
-    public boolean isShowText() {
-        return aBoolean;
+    private void init(Context context, AttributeSet attrs) {
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.WritingBoardView);
+        mBoardBackground = a.getColor(R.styleable.WritingBoardView_boardBackground, Color.WHITE);
+        mPaintColor = a.getColor(R.styleable.WritingBoardView_paintColor, Color.BLUE);
+        mPaintWidth = a.getDimensionPixelSize(R.styleable.WritingBoardView_paintWidth,
+                (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics()));
+        a.recycle();
+        mPaint = new Paint();
+        mPath = new Path();
+        setBackgroundColor(mBoardBackground);
+        mPaint.setColor(mPaintColor);
+        mPaint.setStrokeWidth(mPaintWidth);
+        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setAntiAlias(true);
     }
 
     @Override
@@ -75,21 +92,6 @@ public class WritingBoardView extends View {
         setMeasuredDimension(measuredWidth, measuredHeight);
     }
 
-    /**
-     * 我们自定义控件的属性发生改变之后，控件的样子也可能发生改变，在这种情况下就需要调用invalidate()方法让系统去调用view的onDraw()重新绘制。
-     * 同样的，控件属性的改变可能导致控件所占的大小和形状发生改变，所以我们需要调用requestLayout()来请求测量获取一个新的布局位置。
-     *
-     * @param showText
-     */
-    public void setShowText(boolean showText) {
-        aBoolean = showText;
-        invalidate();
-        requestLayout();
-    }
-
-    public void setInteger(int integer) {
-        this.integer = integer;
-    }
 
     public WritingBoardView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -97,5 +99,32 @@ public class WritingBoardView extends View {
 
     public WritingBoardView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+    }
+
+    //    在onTouch中return true表示要处理当前事件
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        float touchX = event.getX();
+        float touchY = event.getY();
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                //重新设置即将出现的线的起点
+                mPath.moveTo(touchX, touchY);
+                break;
+            case MotionEvent.ACTION_MOVE:
+                //连线
+                mPath.lineTo(touchX, touchY);
+                break;
+            case MotionEvent.ACTION_UP:
+                break;
+        }
+        invalidate();//通知系统重绘
+        return true;//要处理当前事件
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        canvas.drawPath(mPath, mPaint);
     }
 }

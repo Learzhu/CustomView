@@ -15,7 +15,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DragLayoutActivity"></activity>
+        <activity android:name=".DragLayoutActivity" />
+        <activity android:name=".DrawViewListActivity" />
+        <activity android:name=".shapedetail.RectActivity" />
+        <activity android:name=".shapedetail.CircleActivity" />
+        <activity android:name=".shapedetail.ThriangleActivity" />
+        <activity android:name=".shapedetail.SectorActivity" />
+        <activity android:name=".shapedetail.OvalActivity" />
+        <activity android:name=".shapedetail.PathActivity" />
+        <activity android:name=".shapedetail.TvIvActivity" />
+        <activity android:name=".viewdetail.CustomTextViewActivity"></activity>
     </application>
 
 </manifest>

@@ -11,9 +11,17 @@
     tools:context="com.learzhu.customview.customview.MainActivity">
 
     <TextView
+        android:id="@+id/draglayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!" />
+
+    <Button
+        android:id="@+id/to_drawview_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/draglayout"
+        android:text="绘制图形机制列表" />
 
     <com.learzhu.customview.customview.view.SketchView
         android:id="@+id/sketch_view"
