@@ -1,4 +1,4 @@
-package com.learzhu.customview.customview;
+package com.learzhu.customview.customview.view;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -10,6 +10,8 @@ import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.Size;
 import android.view.View;
+
+import com.learzhu.customview.customview.R;
 
 /**
  * @author Learzhu

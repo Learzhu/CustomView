@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.learzhu.customview.customview.DragLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.learzhu.customview.customview.view.DragLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:board="com.learzhu.customview.customview.view.WritingBoardView"
     android:id="@+id/drag_ll"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/color1">
 
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
     <!--左侧-->
     <LinearLayout
         android:id="@+id/left_ll"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="match_parent"
         android:background="@color/colorPrimaryDark"
         android:orientation="vertical">
@@ -36,6 +39,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="GOLEFT" />
+
+        <com.learzhu.customview.customview.view.WritingBoardView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            board:labelPositon="left"
+            board:showText="true" />
     </LinearLayout>
-</com.learzhu.customview.customview.DragLayout>
+</com.learzhu.customview.customview.view.DragLayout>
 

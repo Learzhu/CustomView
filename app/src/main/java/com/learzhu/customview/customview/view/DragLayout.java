@@ -1,4 +1,4 @@
-package com.learzhu.customview.customview;
+package com.learzhu.customview.customview.view;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -61,6 +61,41 @@ public class DragLayout extends FrameLayout {
         //对应参数：父布局、敏感度、回调
         mDragHelper = ViewDragHelper.create(this, mCallBack);
         mDetectorCompat = new GestureDetectorCompat(getContext(), mGestureListener);
+    }
+
+    /**
+     * 重写事件拦截方法
+     *
+     * @param ev
+     * @return
+     */
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        boolean onTouchEvent = mDetectorCompat.onTouchEvent(ev);
+        //将Touch事件传递给ViewDragHelper
+        return mDragHelper.shouldInterceptTouchEvent(ev) & onTouchEvent;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        try {
+            //将Touch事件传递给ViewDragHelper
+            mDragHelper.processTouchEvent(event);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+    /**
+     * 有加速度,当我们停止滑动的时候,不会立即停止动画效果
+     */
+    @Override
+    public void computeScroll() {
+        // 高频率调用，决定是否有下一个变动等待执行
+        if (mDragHelper.continueSettling(true)) {
+            ViewCompat.postInvalidateOnAnimation(this);
+        }
     }
 
     GestureDetector.SimpleOnGestureListener mGestureListener = new GestureDetector.SimpleOnGestureListener() {
@@ -274,6 +309,7 @@ public class DragLayout extends FrameLayout {
         ViewHelper.setTranslationX(mLeftContent, -mWith / 2.3f + mWith / 2.3f * percent);
         //mLeftContent根据百分比进行设置透明度
         ViewHelper.setAlpha(mLeftContent, percent);
+        // 背景：颜色渐变
         getBackground().setColorFilter(evaluate(percent, Color.BLACK, Color.TRANSPARENT), PorterDuff.Mode.SRC_OVER);
     }
 
@@ -319,6 +355,13 @@ public class DragLayout extends FrameLayout {
             mStatus = Status.Draging;
         }
         return mStatus;
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right,
+                            int bottom) {
+        mMainContent.layout(mMainLeft, 0, mMainLeft + mWith, mHeight);
+        mLeftContent.layout(0, 0, mWith, mHeight);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.learzhu.customview.customview;
+package com.learzhu.customview.customview.view;
 
 import android.content.Context;
 import android.util.AttributeSet;

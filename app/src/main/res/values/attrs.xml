@@ -13,4 +13,13 @@
     </declare-styleable>
 
     <attr name="CustomizeStyle" format="reference" />
+
+    <declare-styleable name="WritingBoardView">
+        <attr name="showText" format="boolean" />
+        <attr name="labelPositon" format="enum">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+        </attr>
+
+    </declare-styleable>
 </resources>

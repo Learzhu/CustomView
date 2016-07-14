@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:text="Hello World!" />
 
-    <com.learzhu.customview.customview.SketchView
+    <com.learzhu.customview.customview.view.SketchView
         android:id="@+id/sketch_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
