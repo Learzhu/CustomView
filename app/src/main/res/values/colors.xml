@@ -4,4 +4,18 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="color1">#339956</color>
+
+
+    #f00 //低精度 - 不带透明通道红色
+    #af00 //低精度 - 带透明通道红色
+
+    #ff0000 //高精度 - 不带透明通道红色
+    #aaff0000 //高精度 - 带透明通道红色
+    ARGB8888 四通道高精度(32位)
+    ARGB4444 四通道低精度(16位)
+    RGB565 屏幕默认模式(16位)
+    Alpha8 仅有透明通道(8位)
+
+    <color name="red">#ff0000</color>
+    <color name="green">#00ff00</color>
 </resources>
