@@ -17,7 +17,7 @@ import android.view.View;
  * @updateAuthor $Author$
  * @updateDate $Date$  17:50
  * @updateDes ${TODO}
- * 三角形
+ * 椭圆形
  */
 public class OvalView extends View {
 

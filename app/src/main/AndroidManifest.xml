@@ -25,7 +25,8 @@
         <activity android:name=".shapedetail.PathActivity" />
         <activity android:name=".shapedetail.TvIvActivity" />
         <activity android:name=".viewdetail.CustomTextViewActivity" />
-        <activity android:name=".color.ColorActivity"></activity>
+        <activity android:name=".color.ColorActivity" />
+        <activity android:name=".statistics.StatisticsActivity"></activity>
     </application>
 
 </manifest>
