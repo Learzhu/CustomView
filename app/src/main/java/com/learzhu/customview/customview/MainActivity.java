@@ -7,12 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.learzhu.customview.customview.canvas.CanvasActivity;
 import com.learzhu.customview.customview.statistics.StatisticsActivity;
 import com.learzhu.customview.customview.view.SketchView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button toDrawListViewBtn, toStatisticsBtn;
+    private Button toDrawListViewBtn, toStatisticsBtn, toCanvasBtn;
     private TextView toDragLayoutActivityTv;
     private Intent intent;
     private SketchView sketchView;
@@ -25,14 +26,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void initViews() {
-        sketchView = (SketchView) findViewById(R.id.sketch_view);
-        toDrawListViewBtn = (Button) findViewById(R.id.to_drawview_list);
+        /*饼状图的View界面*/
         toStatisticsBtn = (Button) findViewById(R.id.statistics);
         toStatisticsBtn.setOnClickListener(this);
+        /*侧滑栏的界面*/
         toDragLayoutActivityTv = (TextView) findViewById(R.id.draglayout);
         toDragLayoutActivityTv.setOnClickListener(this);
-        sketchView.startAnimation();
+        /*自定义View列表的界面*/
+        toDrawListViewBtn = (Button) findViewById(R.id.to_drawview_list);
         toDrawListViewBtn.setOnClickListener(this);
+        /*CanVas讲解*/
+        toCanvasBtn = (Button) findViewById(R.id.to_canvas);
+        toCanvasBtn.setOnClickListener(this);
+        /*心跳闪动的View*/
+        sketchView = (SketchView) findViewById(R.id.sketch_view);
+        sketchView.startAnimation();
     }
 
     @Override
@@ -46,6 +54,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.statistics:
                 intent = new Intent(this, StatisticsActivity.class);
+                break;
+            case R.id.to_canvas:
+                intent = new Intent(this, CanvasActivity.class);
                 break;
         }
         startActivity(intent);

@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/draglayout"
         android:layout_marginTop="20dp"
-        android:text="Statistics" />
+        android:text="Statistics饼状图" />
 
     <Button
         android:id="@+id/to_drawview_list"
@@ -32,10 +32,18 @@
         android:layout_below="@id/statistics"
         android:text="绘制图形机制列表" />
 
+    <Button
+        android:id="@+id/to_canvas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/to_drawview_list"
+        android:text="Canvas" />
+
     <com.learzhu.customview.customview.view.SketchView
         android:id="@+id/sketch_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
         android:layout_marginRight="16dp"
         android:layout_marginTop="100dp"
         app:background_color="@color/colorPrimary"

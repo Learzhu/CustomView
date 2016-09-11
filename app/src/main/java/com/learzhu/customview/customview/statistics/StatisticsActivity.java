@@ -15,6 +15,7 @@ public class StatisticsActivity extends AppCompatActivity {
 
     private PieView pieView;
     private ArrayList<PieData> pieDataArrayList;
+    private float value;
 
 
     @Override
@@ -28,10 +29,11 @@ public class StatisticsActivity extends AppCompatActivity {
 
     public ArrayList<PieData> initData() {
         pieDataArrayList = new ArrayList<>();
-        PieData pieData1 = new PieData("A", 5.0f);
-        PieData pieData2 = new PieData("B", 5.0f);
-        PieData pieData3 = new PieData("C", 5.0f);
-        PieData pieData4 = new PieData("D", 5.0f);
+        value = (float) (Math.PI / 2);
+        PieData pieData1 = new PieData("A", value);
+        PieData pieData2 = new PieData("B", value);
+        PieData pieData3 = new PieData("C", value);
+        PieData pieData4 = new PieData("D", value);
 //        PieData pieData5 = new PieData("E", 5.0f);
         pieDataArrayList.add(pieData1);
         pieDataArrayList.add(pieData2);

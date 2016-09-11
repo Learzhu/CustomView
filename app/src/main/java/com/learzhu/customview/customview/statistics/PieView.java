@@ -115,6 +115,7 @@ public class PieView extends View {
         }
         float sumValue = 0;
         float sumAngle = 0;
+        /*设置颜色*/
         for (int i = 0; i < mData.size(); i++) {
             PieData pie = mData.get(i);
             /*计算数值和*/
@@ -122,8 +123,10 @@ public class PieView extends View {
             /*设置颜色*/
             int j = i % mColors.length;
             pie.setColor(mColors[j]);
-
-
+        }
+        /*计算角度*/
+        for (int i = 0; i < mData.size(); i++) {
+            PieData pie = mData.get(i);
             float percentage = pie.getValue() / sumValue;   // 百分比
             float angle = percentage * 360;                 // 对应的角度
             pie.setPercentage(percentage);                  // 记录百分比
@@ -132,6 +135,7 @@ public class PieView extends View {
 
             Log.i("angle", "" + pie.getAngle());
         }
+
     }
 
 }
