@@ -17,6 +17,9 @@ import android.view.WindowManager;
  * @updateAuthor $Author$
  * @updateDate $Date$  11:30
  * @updateDes ${TODO}
+ * <p/>
+ * Rect(l,t,r,b)
+ * 矩形左上角坐标  右下角坐标
  */
 public class CanvasView extends View {
     /*1.创建一个画笔*/
