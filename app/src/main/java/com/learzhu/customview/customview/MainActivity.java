@@ -13,7 +13,7 @@ import com.learzhu.customview.customview.view.SketchView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button toDrawListViewBtn, toStatisticsBtn, toCanvasBtn;
+    private Button toDrawListViewBtn, toStatisticsBtn, toCanvasBtn, toBezierBtn;
     private TextView toDragLayoutActivityTv;
     private Intent intent;
     private SketchView sketchView;
@@ -35,9 +35,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         /*自定义View列表的界面*/
         toDrawListViewBtn = (Button) findViewById(R.id.to_drawview_list);
         toDrawListViewBtn.setOnClickListener(this);
-        /*CanVas讲解*/
+        /*CanVas详解*/
         toCanvasBtn = (Button) findViewById(R.id.to_canvas);
         toCanvasBtn.setOnClickListener(this);
+        /*贝塞尔曲线*/
+        toBezierBtn = (Button) findViewById(R.id.to_bezier);
+        toBezierBtn.setOnClickListener(this);
         /*心跳闪动的View*/
         sketchView = (SketchView) findViewById(R.id.sketch_view);
         sketchView.startAnimation();
@@ -57,6 +60,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.to_canvas:
                 intent = new Intent(this, CanvasActivity.class);
+                break;
+            case R.id.to_bezier:
+                intent = new Intent(this, BezierActivity.class);
                 break;
         }
         startActivity(intent);

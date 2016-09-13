@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.learzhu.customview.customview.BezierActivity">
+
+    <com.learzhu.customview.customview.path.PathQuadBezierView
+        android:id="@+id/quad_bezier"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+    <com.learzhu.customview.customview.path.PathCubicBezierView
+        android:id="@+id/cubic_bezier"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/show_quad_bezier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="二阶Bezier"/>
+
+    <Button
+        android:id="@+id/show_cubic_bezier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/show_quad_bezier"
+        android:text="三阶Bezier"/>
+
+</RelativeLayout>

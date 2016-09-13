@@ -18,7 +18,7 @@ import android.view.View;
  * @updateAuthor $Author$
  * @updateDate $Date$  13:22
  * @updateDes ${TODO}
- * <p/>
+ * <p>
  * 一.Path常用方法表
  * 为了兼容性(偷懒) 本表格中去除了部分API21(即安卓版本5.0)以上才添加的方法。
  * 作用	相关方法	备注
@@ -37,33 +37,35 @@ import android.view.View;
  * 提示方法	incReserve	提示Path还有多少个点等待加入(这个方法貌似会让Path优化存储结构)
  * 布尔操作(API19)	op	对两个Path进行布尔运算(即取交集、并集等操作)
  * 计算边界	computeBounds	计算Path的边界
+ * <p>
  * 重置路径	reset, rewind	清除Path中的内容
  * reset不保留内部数据结构，但会保留FillType.
  * rewind会保留内部的数据结构，但不保留FillType
+ * <p>
  * 矩阵操作	transform	矩阵变换
- * <p/>
+ * <p>
  * Path是封装了由直线和曲线(二次，三次贝塞尔曲线)构成的几何路径。你能用Canvas中的drawPath来把这条路径画出来(同样支持Paint的不同绘制模式)，也可以用于剪裁画布和根据路径绘制文字。
  * 我们有时会用Path来描述一个图像的轮廓，所以也会称为轮廓线(轮廓线仅是Path的一种使用方法，两者并不等价)
  */
-public class CanvasPathView extends View {
+public class PathView extends View {
 
     private Paint mPaint;
     private int mWidth, mHeight;
 
-    public CanvasPathView(Context context) {
+    public PathView(Context context) {
         this(context, null);
     }
 
-    public CanvasPathView(Context context, AttributeSet attrs) {
+    public PathView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initPaint();
     }
 
-    public CanvasPathView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public PathView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    public CanvasPathView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public PathView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
@@ -93,13 +95,13 @@ public class CanvasPathView extends View {
      * moveTo、 setLastPoint、 lineTo 和 close
      * public void lineTo (float x, float y) Path可以用来描述一个图像的轮廓，
      * 图像的轮廓通常都是用一条线构成的，所以这里的某个点就是上次操作结束的点，如果没有进行过操作则默认点为坐标原点
-     * <p/>
+     * <p>
      * // moveTo
      * public void moveTo (float x, float y)
-     * <p/>
+     * <p>
      * // setLastPoint
      * public void setLastPoint (float dx, float dy)
-     * <p/>
+     * <p>
      * 方法名	简介	                   是否影响之前的操作	是否影响之后操作
      * moveTo	移动下一次操作的起点位置	        否	          是
      * setLastPoint	设置之前操作的最后一个点位置	是	          是
@@ -126,9 +128,9 @@ public class CanvasPathView extends View {
 
     /**
      * 画基本图形
-     * <p/>
+     * <p>
      * // 第一类(基本形状)
-     * <p/>
+     * <p>
      * // 圆形
      * public void addCircle (float x, float y, float radius, Path.Direction dir)
      * // 椭圆
@@ -139,8 +141,8 @@ public class CanvasPathView extends View {
      * // 圆角矩形
      * public void addRoundRect (RectF rect, float[] radii, Path.Direction dir)
      * public void addRoundRect (RectF rect, float rx, float ry, Path.Direction dir)
-     * <p/>
-     * <p/>
+     * <p>
+     * <p>
      * Path.Direction dir
      * 类型	解释	翻译
      * CW	clockwise	顺时针
@@ -148,7 +150,7 @@ public class CanvasPathView extends View {
      * 序号	作用
      * 1	在添加图形时确定闭合顺序(各个点的记录顺序)
      * 2	对图形的渲染结果有影响(是判断图形渲染的重要条件)
-     * <p/>
+     * <p>
      * 顺时针和逆时针就是用来确定记录这些点的顺序的
      * ***参数中点的顺序很重要！
      *
@@ -198,24 +200,24 @@ public class CanvasPathView extends View {
     /**
      * 第三类(addArc与arcTo)
      * // 第三类(addArc与arcTo)
-     * <p/>
+     * <p>
      * // addArc
      * public void addArc (RectF oval, float startAngle, float sweepAngle)
      * // arcTo
      * public void arcTo (RectF oval, float startAngle, float sweepAngle)
      * public void arcTo (RectF oval, float startAngle, float sweepAngle, boolean forceMoveTo)
-     * <p/>
+     * <p>
      * 参数	摘要
      * oval	圆弧的外切矩形。
      * startAngle	开始角度
      * sweepAngle	扫过角度(-360 <= sweepAngle <360)
      * sweepAngle取值范围是 [-360, 360)，不包括360，当 >= 360 或者 < -360 时将不会绘制任何内容， 对于360，你可以用一个接近的值替代，例如: 359.99
      * forceMoveTo	是否强制使用MoveTo
-     * <p/>
+     * <p>
      * 名称	作用	区别
      * addArc	添加一个圆弧到path	直接添加一个圆弧到path中
      * arcTo	添加一个圆弧到path	添加一个圆弧到path，如果圆弧的起点和上次最后一个坐标点不相同，就连接两个点
-     * <p/>
+     * <p>
      * forceMoveTo	含义	等价方法
      * true	将最后一个点移动到圆弧起点，即不连接最后一个点与圆弧起点	public void addArc (RectF oval, float startAngle, float sweepAngle)
      * false	不移动，而是连接最后一个点与圆弧起点	public void arcTo (RectF oval, float startAngle, float sweepAngle)
@@ -274,14 +276,14 @@ public class CanvasPathView extends View {
     /**
      * offset
      * 方法预览：
-     * <p/>
+     * <p>
      * public void offset (float dx, float dy)
      * public void offset (float dx, float dy, Path dst)
-     * <p/>
+     * <p>
      * 这个的作用也很简单，就是对path进行一段平移，它和Canvas中的translate作用很像，但Canvas作用于整个画布，而path的offset只作用于当前path。
-     * <p/>
+     * <p>
      * 其实第二个方法中最后的参数das是存储平移后的path的。
-     * <p/>
+     * <p>
      * dst状态	效果
      * dst不为空	将当前path平移后的状态存入dst中，不会影响当前path
      * dat为空(null)	平移将作用于当前path，相当于第一种方法
