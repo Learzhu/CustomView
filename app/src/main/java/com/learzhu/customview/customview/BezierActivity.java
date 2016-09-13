@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.learzhu.customview.customview.path.LoveView;
 import com.learzhu.customview.customview.path.PathCubicBezierView;
 import com.learzhu.customview.customview.path.PathQuadBezierView;
 
@@ -25,11 +26,13 @@ import com.learzhu.customview.customview.path.PathQuadBezierView;
  */
 public class BezierActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button quadBezierBtn, cubicBezierBtn;
+    private Button quadBezierBtn, cubicBezierBtn, loveBezierBtn;
     /*二阶贝塞尔曲线*/
     private PathQuadBezierView mPathQuadBezierView;
     /*三阶贝塞尔曲线*/
     private PathCubicBezierView mPathCubicBezierView;
+    /*爱心的贝塞尔曲线*/
+    private LoveView mLoveView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,10 @@ public class BezierActivity extends AppCompatActivity implements View.OnClickLis
         cubicBezierBtn = (Button) findViewById(R.id.show_cubic_bezier);
         cubicBezierBtn.setOnClickListener(this);
         mPathCubicBezierView = (PathCubicBezierView) findViewById(R.id.cubic_bezier);
+        /*爱心的贝塞尔曲线*/
+        loveBezierBtn = (Button) findViewById(R.id.show_love_bezier);
+        loveBezierBtn.setOnClickListener(this);
+        mLoveView = (LoveView) findViewById(R.id.love_bezier);
     }
 
     @Override
@@ -61,6 +68,9 @@ public class BezierActivity extends AppCompatActivity implements View.OnClickLis
                 cubicBezierBtn.setVisibility(View.GONE);
                 mPathCubicBezierView.setMode(true);
                 break;
+            case R.id.show_love_bezier:
+                loveBezierBtn.setVisibility(View.GONE);
+                mLoveView.setVisibility(View.VISIBLE);
         }
     }
 }

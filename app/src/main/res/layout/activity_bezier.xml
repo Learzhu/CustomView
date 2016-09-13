@@ -18,6 +18,12 @@
         android:layout_height="match_parent"
         android:visibility="gone"/>
 
+    <com.learzhu.customview.customview.path.LoveView
+        android:id="@+id/love_bezier"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
     <Button
         android:id="@+id/show_quad_bezier"
         android:layout_width="wrap_content"
@@ -30,5 +36,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/show_quad_bezier"
         android:text="三阶Bezier"/>
+
+    <Button
+        android:id="@+id/show_love_bezier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/show_cubic_bezier"
+        android:text="LOVE View"/>
 
 </RelativeLayout>

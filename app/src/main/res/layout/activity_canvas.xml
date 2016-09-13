@@ -1,26 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/root"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.learzhu.customview.customview.canvas.CanvasActivity">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/root"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.learzhu.customview.customview.canvas.CanvasActivity">
 
-    <!--<com.learzhu.customview.customview.canvas.CanvasView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent" />-->
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <!--<com.learzhu.customview.customview.canvas.CanvasPictureView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent" />-->
+        <Button
+            android:id="@+id/to_cave_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CaveView"/>
+
+        <Button
+            android:id="@+id/to_cave_picture_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CanvasPictureView"/>
+
+        <Button
+            android:id="@+id/to_check_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CheckView"/>
+
+        <Button
+            android:id="@+id/to_taiji_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TaiJiBaguaView"/>
+
+        <Button
+            android:id="@+id/to_path_improve_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PathImproveView"/>
+
+    </LinearLayout>
+
+
+    <com.learzhu.customview.customview.canvas.CanvasView
+        android:id="@+id/canvas_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+    <com.learzhu.customview.customview.canvas.CanvasPictureView
+        android:id="@+id/canvas_picture_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
 
     <com.learzhu.customview.customview.canvas.CheckView
         android:id="@+id/checkview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible" />
+        android:visibility="gone"/>
 
     <com.learzhu.customview.customview.canvas.TaiJiBaguaView
+        android:id="@+id/taiji_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+    <com.learzhu.customview.customview.path.PathImproveView
+        android:id="@+id/path_improve_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
 </RelativeLayout>
