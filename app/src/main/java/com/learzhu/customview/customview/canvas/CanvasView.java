@@ -28,6 +28,11 @@ public class CanvasView extends View {
     private int mWidth, mHeight;
 
     /*2.初始化画笔*/
+
+    /**
+     * FILL与FILL_AND_STROKE 经过测试是存在区别的。FILL模式下，图像的大小由canvas指定。
+     * FILL_AND_STROKE模式下，图像的真实大小是canvas指定+画笔宽度/2
+     */
     private void initPaint() {
         /*设置画笔颜色*/
         mPaint.setColor(Color.BLACK);

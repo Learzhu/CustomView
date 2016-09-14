@@ -42,6 +42,18 @@
             android:layout_height="wrap_content"
             android:text="PathImproveView"/>
 
+        <Button
+            android:id="@+id/to_path_measure_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PathMeasureView"/>
+
+        <Button
+            android:id="@+id/to_arrow_rotate_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ArrowRotateView"/>
+
     </LinearLayout>
 
 
@@ -75,4 +87,15 @@
         android:layout_height="match_parent"
         android:visibility="gone"/>
 
+    <com.learzhu.customview.customview.pathmeasure.PathMeasureView
+        android:id="@+id/path_measure_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+    <com.learzhu.customview.customview.pathmeasure.ArrowRotateView
+        android:id="@+id/arrow_totate_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
 </RelativeLayout>

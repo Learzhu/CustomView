@@ -13,6 +13,8 @@ import android.widget.RelativeLayout;
 
 import com.learzhu.customview.customview.R;
 import com.learzhu.customview.customview.path.PathImproveView;
+import com.learzhu.customview.customview.pathmeasure.ArrowRotateView;
+import com.learzhu.customview.customview.pathmeasure.PathMeasureView;
 
 /**
  * Canvas详解
@@ -42,12 +44,14 @@ public class CanvasActivity extends AppCompatActivity implements View.OnClickLis
     private RelativeLayout relativeLayout;
 
     private LinearLayout buttonsLl;
-    private Button toCaveViewBtn, toCavePictureViewBtn, toCheckViewBtn, toTaijiViewBtn, toPathImproveViewBtn;
+    private Button toCaveViewBtn, toCavePictureViewBtn, toCheckViewBtn, toTaijiViewBtn, toPathImproveViewBtn, toPathMeasureViewBtn, toArrowRotateViewBtn;
     private CanvasView mCanvasView;
     private CanvasPictureView mCanvasPictureView;
     private CheckView mCheckView;
     private TaiJiBaguaView mTaiJiBaguaView;
     private PathImproveView mPathImproveView;
+    private PathMeasureView mPathMeasureView;
+    private ArrowRotateView mArrowRotateView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +86,16 @@ public class CanvasActivity extends AppCompatActivity implements View.OnClickLis
         toPathImproveViewBtn = (Button) findViewById(R.id.to_path_improve_view);
         toPathImproveViewBtn.setOnClickListener(this);
         mPathImproveView = (PathImproveView) findViewById(R.id.path_improve_view);
+        /*PathMeasureView*/
+        toPathMeasureViewBtn = (Button) findViewById(R.id.to_path_measure_view);
+        toPathMeasureViewBtn.setOnClickListener(this);
+        mPathMeasureView = (PathMeasureView) findViewById(R.id.path_measure_view);
+        /*ArrowRotateView*/
+        toArrowRotateViewBtn = (Button) findViewById(R.id.to_arrow_rotate_view);
+        toArrowRotateViewBtn.setOnClickListener(this);
+        mArrowRotateView = (ArrowRotateView) findViewById(R.id.arrow_totate_view);
     }
+
 
     /**
      * 打钩的图
@@ -125,6 +138,10 @@ public class CanvasActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.to_path_improve_view:
                 mPathImproveView.setVisibility(View.VISIBLE);
                 break;
+            case R.id.to_path_measure_view:
+                mPathMeasureView.setVisibility(View.VISIBLE);
+            case R.id.to_arrow_rotate_view:
+                mArrowRotateView.setVisibility(View.VISIBLE);
         }
     }
 }

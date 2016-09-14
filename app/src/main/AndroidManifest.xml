@@ -28,7 +28,9 @@
         <activity android:name=".color.ColorActivity"/>
         <activity android:name=".statistics.StatisticsActivity"/>
         <activity android:name=".canvas.CanvasActivity"/>
-        <activity android:name=".BezierActivity">
+        <activity android:name=".BezierActivity"/>
+        <activity android:name=".svg.SVGActivity"/>
+        <activity android:name=".vector.VectorActivity">
         </activity>
     </application>
 

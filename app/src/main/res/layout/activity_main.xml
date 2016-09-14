@@ -46,6 +46,14 @@
         android:layout_below="@id/to_canvas"
         android:text="Bezier"/>
 
+    <Button
+        android:id="@+id/to_svg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/to_bezier"
+        android:text="SVG"/>
+
+
     <com.learzhu.customview.customview.view.SketchView
         android:id="@+id/sketch_view"
         android:layout_width="100dp"

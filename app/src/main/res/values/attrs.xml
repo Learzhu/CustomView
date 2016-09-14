@@ -1,22 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="SketchView">
-        <attr name="background_color" format="color" />
-        <attr name="size" format="dimension" />
+        <attr name="background_color" format="color"/>
+        <attr name="size" format="dimension"/>
     </declare-styleable>
 
     <declare-styleable name="Customize">
-        <attr name="attr_one" format="string" />
-        <attr name="attr_two" format="string" />
-        <attr name="attr_three" format="string" />
-        <attr name="attr_four" format="string" />
+        <attr name="attr_one" format="string"/>
+        <attr name="attr_two" format="string"/>
+        <attr name="attr_three" format="string"/>
+        <attr name="attr_four" format="string"/>
     </declare-styleable>
 
-    <attr name="CustomizeStyle" format="reference" />
+    <attr name="CustomizeStyle" format="reference"/>
 
     <declare-styleable name="WritingBoardView">
         <attr name="boardBackground" format="color"></attr> <!--画板颜色-->
         <attr name="paintColor" format="color"></attr> <!--画笔颜色-->
         <attr name="paintWidth" format="dimension"></attr> <!--画笔宽度-->
     </declare-styleable>
+
+    <!--以下部分为 SVN的一个效果图-->
+    <declare-styleable name="AspectRatioLayout">
+        <attr name="oakAspectRatio" format="string"/>
+    </declare-styleable>
+    <declare-styleable name="AnimatedSvgView">
+        <attr name="oakSvgImageSizeX" format="integer"/>
+        <attr name="oakSvgImageSizeY" format="integer"/>
+        <attr name="oakSvgTraceTime" format="string"/>
+        <attr name="oakSvgTraceTimePerGlyph" format="string"/>
+        <attr name="oakSvgFillStart" format="string"/>
+        <attr name="oakSvgFillTime" format="string"/>
+    </declare-styleable>
+
+
 </resources>
