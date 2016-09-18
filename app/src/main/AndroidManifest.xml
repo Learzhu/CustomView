@@ -32,6 +32,8 @@
         <activity android:name=".svg.SVGActivity"/>
         <activity android:name=".vector.VectorActivity">
         </activity>
+        <activity android:name=".matrix.ZoomImageViewActivity">
+        </activity>
     </application>
 
 </manifest>

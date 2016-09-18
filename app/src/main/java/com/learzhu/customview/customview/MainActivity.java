@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.caverock.androidsvg.SVG;
 import com.caverock.androidsvg.SVGParseException;
 import com.learzhu.customview.customview.canvas.CanvasActivity;
+import com.learzhu.customview.customview.matrix.ZoomImageViewActivity;
 import com.learzhu.customview.customview.statistics.StatisticsActivity;
 import com.learzhu.customview.customview.svg.SVGActivity;
 import com.learzhu.customview.customview.view.SketchView;
@@ -20,7 +21,7 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button toDrawListViewBtn, toStatisticsBtn, toCanvasBtn, toBezierBtn, toSvgBtn;
+    private Button toDrawListViewBtn, toStatisticsBtn, toCanvasBtn, toBezierBtn, toSvgBtn, toZoomImageViewBtn;
     private TextView toDragLayoutActivityTv;
     private Intent intent;
     private SketchView sketchView;
@@ -51,6 +52,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         /*到SVG界面*/
         toSvgBtn = (Button) findViewById(R.id.to_svg);
         toSvgBtn.setOnClickListener(this);
+        /*到ZoomImageView界面*/
+        toZoomImageViewBtn = (Button) findViewById(R.id.to_zoomimageview);
+        toZoomImageViewBtn.setOnClickListener(this);
         /*心跳闪动的View*/
         sketchView = (SketchView) findViewById(R.id.sketch_view);
         sketchView.startAnimation();
@@ -77,6 +81,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.to_svg:
                 intent = new Intent(this, SVGActivity.class);
                 break;
+            case R.id.to_zoomimageview:
+                intent = new Intent(this, ZoomImageViewActivity.class);
+                break;
         }
         startActivity(intent);
     }
@@ -90,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            if (mSVG.getDocumentWidth() != -1) {
 //                Bitmap newBM = Bitmap.createBitmap(Math.ceil(mSVG.getDocumentWidth()),
 //                        Math.ceil(mSVG.getDocumentHeight()),
-//                        Bitmap.Config.ARGB_8888);
+//                        Bitmap.Config.ARGB_8888)
 //                Canvas bmcanvas = new Canvas(newBM);
 //
 //                // Clear background to white

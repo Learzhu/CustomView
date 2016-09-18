@@ -10,48 +10,60 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 tools:context="com.learzhu.customview.customview.MainActivity">
 
-    <TextView
-        android:id="@+id/draglayout"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/green"
-        android:text="To DragLayout"/>
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/statistics"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/draglayout"
-        android:layout_marginTop="20dp"
-        android:text="Statistics饼状图"/>
+        <TextView
+            android:id="@+id/draglayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:text="To DragLayout"/>
 
-    <Button
-        android:id="@+id/to_drawview_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/statistics"
-        android:text="绘制图形机制列表"/>
+        <Button
+            android:id="@+id/statistics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/draglayout"
+            android:layout_marginTop="20dp"
+            android:text="Statistics饼状图"/>
 
-    <Button
-        android:id="@+id/to_canvas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/to_drawview_list"
-        android:text="Canvas"/>
+        <Button
+            android:id="@+id/to_drawview_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/statistics"
+            android:text="绘制图形机制列表"/>
 
-    <Button
-        android:id="@+id/to_bezier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/to_canvas"
-        android:text="Bezier"/>
+        <Button
+            android:id="@+id/to_canvas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/to_drawview_list"
+            android:text="Canvas"/>
 
-    <Button
-        android:id="@+id/to_svg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/to_bezier"
-        android:text="SVG"/>
+        <Button
+            android:id="@+id/to_bezier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/to_canvas"
+            android:text="Bezier"/>
+
+        <Button
+            android:id="@+id/to_svg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/to_bezier"
+            android:text="SVG"/>
+
+        <Button
+            android:id="@+id/to_zoomimageview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZoomImageView"/>
+    </LinearLayout>
 
 
     <com.learzhu.customview.customview.view.SketchView
