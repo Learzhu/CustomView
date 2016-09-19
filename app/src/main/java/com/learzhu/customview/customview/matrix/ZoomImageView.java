@@ -192,7 +192,8 @@ public class ZoomImageView extends ImageView implements OnGlobalLayoutListener, 
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        getViewTreeObserver().removeGlobalOnLayoutListener(this);
+//        getViewTreeObserver().removeGlobalOnLayoutListener(this);
+        getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
 
     /**
@@ -294,7 +295,8 @@ public class ZoomImageView extends ImageView implements OnGlobalLayoutListener, 
 
             /*大于最大的时候设置为最大值*/
             if (mScale * mScaleFactor > mMaxScale) {
-                mScaleFactor = mMaxScale / mScale;
+//                mScaleFactor = mMaxScale / mScale;
+                mScale = mMaxScale / mScale;
             }
             /*以屏幕中心点为缩放中心执行缩放*/
             mMatrix.postScale(mScaleFactor, mScaleFactor, getWidth() / 2, getHeight() / 2);
@@ -308,6 +310,7 @@ public class ZoomImageView extends ImageView implements OnGlobalLayoutListener, 
             setImageMatrix(mMatrix);
         }
         return true;
+//        return false;
     }
 
     /**
@@ -371,7 +374,8 @@ public class ZoomImageView extends ImageView implements OnGlobalLayoutListener, 
             deltaX = mWidth / 2f - rectF.right + rectF.width() / 2f;
         }
         if (rectF.height() < mHeight) {
-            deltaY = mHeight / 2f - rectF.top + rectF.height() / 2f;
+//            deltaY = mHeight / 2f - rectF.top + rectF.height() / 2f;
+            deltaY = mHeight / 2f - rectF.bottom + rectF.height() / 2f;
         }
         /*平移*/
         mMatrix.postTranslate(deltaX, deltaY);
@@ -450,6 +454,7 @@ public class ZoomImageView extends ImageView implements OnGlobalLayoutListener, 
                             dy = 0;
                         }
                         mMatrix.postTranslate(dx, dy);
+                        /*平移的时候检查边沿*/
                         checkBorderWhenTranslate();
                         setImageMatrix(mMatrix);
                     }

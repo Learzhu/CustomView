@@ -24,12 +24,16 @@ public class ZoomImageViewActivity extends AppCompatActivity {
         mViewPager.setAdapter(new PagerAdapter() {
             @Override
             public Object instantiateItem(ViewGroup container, int position) {
+                /*自己的View缩小有问题*/
                 ZoomImageView mZoomImageView = new ZoomImageView(getApplicationContext());
+                /*网上的ImageView*/
+//                ZoomImageView1 mZoomImageView = new ZoomImageView1(getApplicationContext());
                 mZoomImageView.setImageResource(mImages[position]);
                 container.addView(mZoomImageView);
                 mImageViews[position] = mZoomImageView;
                 return mZoomImageView;
             }
+
 
             @Override
             public void destroyItem(ViewGroup container, int position, Object object) {
