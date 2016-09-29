@@ -1,0 +1,66 @@
+RecyclerView介绍使用：
+http://www.lcode.org/recyclerview完全解析让你从此爱上recyclerview/
+
+1.介绍：
+通过使用RecyclerView控件，我们可以在APP中创建带有Material Design风格的复杂列表。RecyclerView控件和ListView的原理有很多相似的地方,都是维护少量的View来进行显示大量的数据，
+不过RecyclerView控件比ListView更加高级并且更加灵活。当我们的数据因为用户事件或者网络事件发生改变的时候也能很好的进行显示。和ListView不同的是，
+RecyclerView不用在负责Item的显示相关的功能，在这边所有有关布局,绘制,数据绑定等都被分拆成不同的类进行管理，下面我这边会一个个的进行讲解。
+同时RecyclerView控件提供了以下两种方法来进行简化和处理大数量集合:
+
+采用LayoutManager来处理Item的布局
+提供Item操作的默认动画，例如在增加或者删除item的时候
+你也可以自定义LayoutManager或者设置添加/删除的动画，整体的RecyclerView结构图如下:
+
+RecyclerView
+LayoutManager  ---->Adapter ----> Dataset
+
+2.使用：
+为了使用RecyclerView控件，我们需要创建一个Adapter和一个LayoutManager：
+Adapter：集成自RecyclerView.Adapetr类，主要用来将数据和布局item进行绑定。
+LayoutManager:布局管理器，设置每一项view在RecyclerView中的位置布局以及控件item view的显
+示或者隐藏.当重用或者回收一个view的时候，LayoutManger都会向Adapter来请求新的数据来进行替换原来数据的内容。这种回收重用的机制可以提供性能，避免创建很多的view或者是频繁的调用findViewById方法。这种机制和ListView还是很相似的。
+RecyclerView提供了三种内置的LayoutManager:
+LinearLayoutManager:线性布局,横向或者纵向滑动列表
+GridLayoutManager:表格布局
+StaggeredGridLayoutManager:流式布局
+当然除了上面的三种内部布局之外，我们还可以机车呢过RecyclerView.LayoutManager来实现一个自定义的LayoutManager。
+
+
+3.动画：
+Animations(动画)效果:
+RecyclerView对于Item的添加和删除是默认开启动画的。我们当然也可以通过RecyclerView.ItemAnimator类定制动画，然后通过RecyclerView.setItemAnimator()方法来进行使用。
+RecyclerView相关类:
+类名	说明
+RecyclerView.Adapter
+
+可以托管数据集合，为每一项Item创建视图并且绑定数据
+RecyclerView.ViewHolder	承载Item视图的子布局
+RecyclerView.LayoutManager
+
+负责Item视图的布局的显示管理
+RecyclerView.ItemDecoration	给每一项Item视图添加子View,可以进行画分隔线之类的东西
+RecyclerView.ItemAnimator
+
+负责处理数据添加或者删除时候的动画效果
+
+4.具体实现步骤
+1.添加库依赖:  注意版本号和 编译版本一样
+compile 'com.android.support:recyclerview-v7:23.1.1'
+2.新建布局,引入RecyclerView控件:
+3.在Activity中获取RecyclerView控件然后进行设置LayoutManger以及Adapter即可,和ListView的写法有点类似
+4.自定义一个适配器来进行创建item view以及绑定数据
+
+5.分割线
+RecyclerView分隔线实现(ItemDecoration):
+
+大家肯定观察到上面的显示效果还是比较丑，例如就没有分隔线这个效果，下面我们一起来实现以下分隔线的效果。还记得前面的一个表格中有写关于RecyclerView的相关类:
+
+RecyclerView.ItemDecoration	给每一项Item视图添加子View,可以进行画分隔线之类的东西
+我们可以创建一个继承RecyclerView.ItemDecoration类来绘制分隔线，通过ItemDecoration可以让我们每一个Item从视觉上面相互分开来，
+例如ListView的divider非常相似的效果。当然像我们上面的例子ItemDecoration我们没有设置也没有报错哦，那说明ItemDecoration我们并不是强制需要使用，
+作为我们开发者可以设置或者不设置Decoration的。
+
+实现一个ItemDecoration，系统提供的ItemDecoration是一个抽象类，内部出去已经废弃的方法以外，我们主要实现以下三个方法:
+又因为当我们RecyclerView在进行绘制的时候会进行绘制Decoration,那么会去调用onDraw和onDrawOver方法，
+那么这边我们其实只要去重写onDraw和getItemOffsets这两个方法就可以实现啦。然后LayoutManager会进行Item布局的时候，
+回去调用getItemOffset方法来计算每个Item的Decoration合适的尺寸，下面我们来具体实现一个Decoration。TestDecoration.java

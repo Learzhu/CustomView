@@ -12,6 +12,7 @@ import android.view.View;
 
 /**
  * Created by qibin on 2015/11/7.
+ * RecyclerView的Item之间的分隔
  */
 public class GridItemDecoration extends RecyclerView.ItemDecoration {
     private static final int[] ATTRS = new int[]{android.R.attr.listDivider};
@@ -31,10 +32,8 @@ public class GridItemDecoration extends RecyclerView.ItemDecoration {
 
     @Override
     public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
-
         drawHorizontal(c, parent);
         drawVertical(c, parent);
-
     }
 
     private int getSpanCount(RecyclerView parent) {
@@ -42,7 +41,6 @@ public class GridItemDecoration extends RecyclerView.ItemDecoration {
         int spanCount = -1;
         RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
         if (layoutManager instanceof GridLayoutManager) {
-
             spanCount = ((GridLayoutManager) layoutManager).getSpanCount();
         } else if (layoutManager instanceof StaggeredGridLayoutManager) {
             spanCount = ((StaggeredGridLayoutManager) layoutManager)
@@ -51,6 +49,12 @@ public class GridItemDecoration extends RecyclerView.ItemDecoration {
         return spanCount;
     }
 
+    /**
+     * 水平分割线
+     *
+     * @param c
+     * @param parent
+     */
     public void drawHorizontal(Canvas c, RecyclerView parent) {
         int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
@@ -67,23 +71,36 @@ public class GridItemDecoration extends RecyclerView.ItemDecoration {
         }
     }
 
+    /**
+     * 垂直分割线
+     *
+     * @param c
+     * @param parent
+     */
     public void drawVertical(Canvas c, RecyclerView parent) {
         final int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
             final View child = parent.getChildAt(i);
-
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child
                     .getLayoutParams();
             final int top = child.getTop() - params.topMargin;
             final int bottom = child.getBottom() + params.bottomMargin;
             final int left = child.getRight() + params.rightMargin;
             final int right = left + mDivider.getIntrinsicWidth();
-
             mDivider.setBounds(left, top, right, bottom);
             mDivider.draw(c);
         }
     }
 
+    /**
+     * 判断是否是最后一列
+     *
+     * @param parent
+     * @param pos
+     * @param spanCount
+     * @param childCount
+     * @return
+     */
     private boolean isLastColum(RecyclerView parent, int pos, int spanCount,
                                 int childCount) {
         RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
@@ -109,25 +126,30 @@ public class GridItemDecoration extends RecyclerView.ItemDecoration {
         return false;
     }
 
+    /**
+     * 设置间距
+     *
+     * @param outRect
+     * @param view
+     * @param parent
+     * @param state
+     */
     @Override
     public void getItemOffsets(Rect outRect, View view,
                                RecyclerView parent, RecyclerView.State state) {
         int position = parent.getChildAdapterPosition(view);
-
         int spanCount = getSpanCount(parent);
         int childCount = parent.getAdapter().getItemCount();
-
         int pos = position;
-
-        if(hasHeader) {
-            if(position == 0) {
+        if (hasHeader) {
+            if (position == 0) {
                 outRect.set(0, 0, 0, mDivider.getIntrinsicHeight());
                 return;
             } else {
                 pos = position - 1;
             }
         }
-
+        /*最后一列不需要设置间隔*/
         if (isLastColum(parent, pos, spanCount, childCount)) {
             outRect.set(0, 0, mDivider.getIntrinsicWidth(), mDivider.getIntrinsicHeight());
         } else {

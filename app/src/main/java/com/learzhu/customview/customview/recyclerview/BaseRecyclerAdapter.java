@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * @updateDate $Date$  14:12
  * @updateDes ${TODO}
  * RecyclerView的抽象Adapter
- * <p>
+ * <p/>
  * 提供两个抽象方法onCreate和onBind用来创建holder和绑定数据，而对于header做的一系列工作，
  * 我们都放到了BaseRecyclerAdapter中，而继承BaseRecyclerAdapter后，我们仅仅关心我们的holder怎么创建和数据怎么绑定就ok
  */
@@ -133,6 +133,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 
     /**
      * 当是StaggeredGridLayoutManager的时候 设置第一行占据全部
+     * 防止 header的布局被复用到了其他item上
      *
      * @param holder
      */
@@ -142,7 +143,12 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
         ViewGroup.LayoutParams mLayoutParams = holder.itemView.getLayoutParams();
         if (mLayoutParams != null && mLayoutParams instanceof StaggeredGridLayoutManager.LayoutParams) {
             StaggeredGridLayoutManager.LayoutParams lp = (StaggeredGridLayoutManager.LayoutParams) mLayoutParams;
-            lp.setFullSpan(holder.getLayoutPosition() == 0);
+            if (mHeaderView != null) {
+                /*当有头部的时候才设置为第一行占满*/
+                lp.setFullSpan(holder.getLayoutPosition() == 0);
+            } else {
+                lp.setFullSpan(false);
+            }
         }
     }
 
