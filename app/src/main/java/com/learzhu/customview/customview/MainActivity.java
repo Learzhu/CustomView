@@ -13,6 +13,7 @@ import com.caverock.androidsvg.SVG;
 import com.caverock.androidsvg.SVGParseException;
 import com.learzhu.customview.customview.canvas.CanvasActivity;
 import com.learzhu.customview.customview.matrix.ZoomImageViewActivity;
+import com.learzhu.customview.customview.recyclerview.RecyclerViewActivity;
 import com.learzhu.customview.customview.statistics.StatisticsActivity;
 import com.learzhu.customview.customview.svg.SVGActivity;
 import com.learzhu.customview.customview.view.SketchView;
@@ -21,7 +22,7 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button toDrawListViewBtn, toStatisticsBtn, toCanvasBtn, toBezierBtn, toSvgBtn, toZoomImageViewBtn;
+    private Button toDrawListViewBtn, toStatisticsBtn, toCanvasBtn, toBezierBtn, toSvgBtn, toZoomImageViewBtn, toRecyclerViewBtn;
     private TextView toDragLayoutActivityTv;
     private Intent intent;
     private SketchView sketchView;
@@ -55,6 +56,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         /*到ZoomImageView界面*/
         toZoomImageViewBtn = (Button) findViewById(R.id.to_zoomimageview);
         toZoomImageViewBtn.setOnClickListener(this);
+        /*跳转到RecyclerView*/
+        toRecyclerViewBtn = (Button) findViewById(R.id.to_recyclerview);
+        toRecyclerViewBtn.setOnClickListener(this);
         /*心跳闪动的View*/
         sketchView = (SketchView) findViewById(R.id.sketch_view);
         sketchView.startAnimation();
@@ -83,6 +87,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.to_zoomimageview:
                 intent = new Intent(this, ZoomImageViewActivity.class);
+                break;
+            case R.id.to_recyclerview:
+                intent = new Intent(this, RecyclerViewActivity.class);
                 break;
         }
         startActivity(intent);
